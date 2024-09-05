@@ -7,11 +7,21 @@ test.beforeEach(async ({ loginPage }) => {
 test.describe('User login using invalid credential @pass', () => {
   test('Login using invalid email and password', async ({ loginPage }) => {
     await test.step('Fill login form then submit', async () => {
-      await loginPage.login('user@folka.com', 'password');
+      await loginPage.login('user@folka.com', 'folkatech');
     });
 
     await test.step('Assert error', async () => {
       await expect(loginPage.incorectLoginError).toBeVisible();
+    });
+  });
+
+  test('Login using invalid password', async ({ loginPage }) => {
+    await test.step('Fill login form then submit', async () => {
+      await loginPage.login('admin@example.com', 'folkatech');
+    });
+
+    await test.step('Assert error', async () => {
+      await expect(loginPage.incorectPasswordError).toBeVisible();
     });
   });
 

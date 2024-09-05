@@ -7,6 +7,7 @@ export class LoginPage extends BasePage {
   readonly passwordInput: Locator;
   readonly loginButton: Locator;
   readonly incorectLoginError: Locator;
+  readonly incorectPasswordError: Locator;
   readonly blankEmailError: Locator;
   readonly blankPasswordError: Locator;
 
@@ -17,6 +18,7 @@ export class LoginPage extends BasePage {
     this.passwordInput = page.locator('input[name="password"]');
     this.loginButton = page.getByRole('button', { name: 'Sign in' });
     this.incorectLoginError = page.getByText('Login Gagal! Akun tidak ada.');
+    this.incorectPasswordError = page.getByText('Login Gagal! Kata sandi salah.');
     this.blankEmailError = page.getByText('Email harus diisi.', { exact: true });
     this.blankPasswordError = page.getByText('Kata Sandi harus diisi.', { exact: true });
   }
